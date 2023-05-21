@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { createUser, getUsers } from "../../database/lowdb";
+import { Link } from 'react-router-dom';
 import "./Index.css";
 
 const RegistrationForm = () => {
@@ -27,6 +29,11 @@ const RegistrationForm = () => {
       alert("Password must contain at least one number");
       return;
     }
+
+    const newUser = { name, password, email };
+    createUser(newUser);
+
+    console.log(getUsers);
 
     console.log("Submitted successfully:", { name, email, password });
     setName("");
@@ -66,7 +73,8 @@ const RegistrationForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button type="submit">Register</button>
+      <button type="submit">Register</button><br/>
+      <Link to="/login">Go to Login</Link>
     </form>
   );
 };
