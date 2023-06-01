@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { loginUser } from "../../database/lowdb";
+import { getUser } from "../../database/lowdb";
 import { useHistory } from "react-router-dom";
 import "./Index.css";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/userSlice";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +20,9 @@ const Login = () => {
       return;
     }
 
-    const user = loginUser(identifier, password);
+    const user = getUser(identifier, password);
     if (user) {
+      dispatch(login(user));
       history.push("/main");
     } else {
       console.log("Invalid name, email or password");

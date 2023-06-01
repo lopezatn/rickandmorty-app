@@ -35,7 +35,7 @@ export const getUsers = () => {
   return db.data.user;
 };
 
-export const loginUser = (identifier, password) => {
+export const getUser = (identifier, password) => {
   const users = getUsers();
 
   const user = users.find(

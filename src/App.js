@@ -5,6 +5,7 @@ import Main from "./components/Main/Index";
 import Navbar from "./components/Navbar/Index";
 import RegistrationForm from "./components/RegistrationForm/Index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Profile from "./components/Profile/Index";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/main">
           <Main />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </Router>
