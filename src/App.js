@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import "./App.css";
 import Login from "./components/Login/Index";
 import Main from "./components/Main/Index";
@@ -6,6 +7,11 @@ import RegistrationForm from "./components/RegistrationForm/Index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
+  const user = useSelector((state) => state.user);
+
+  //I'll use this later for the protected routes :)
+  const isLogged = user ? true : false;
+
   return (
     <Router>
       <Navbar />

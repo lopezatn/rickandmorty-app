@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { createUser, getUsers } from "../../database/lowdb";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./Index.css";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/userSlice";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +37,14 @@ const RegistrationForm = () => {
     const newUser = { name, password, email };
     createUser(newUser);
 
-    console.log(getUsers);
+    dispatch(
+      login({
+        name: name,
+        password: password,
+        email: email,
+        loggedIn: true,
+      })
+    );
 
     console.log("Submitted successfully:", { name, email, password });
     setName("");
@@ -73,7 +84,8 @@ const RegistrationForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button type="submit">Register</button><br/>
+      <button type="submit">Register</button>
+      <br />
       <Link to="/login">Go to Login</Link>
     </form>
   );
