@@ -18,7 +18,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <img src={piedpiper} alt="Logo" className="navbar-logo" />
-        <div className="navbar-links-left">
+        <div className={`navbar-links-left ${isAuthenticated ? "authenticated" : ""}`}>
           {!isAuthenticated && (
             <>
               <Link to="/register" className="navbar-link">
