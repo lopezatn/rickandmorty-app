@@ -23,9 +23,9 @@ const Login = () => {
     const user = getUser(identifier, password);
     if (user) {
       dispatch(login(user));
-      history.push("/main");
+      history.push("/profile");
     } else {
-      console.log("Invalid name, email or password");
+      alert("Invalid name, email or password");
     }
     setPassword("");
   };

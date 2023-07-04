@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux";
 import "./App.css";
+import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/Login/Index";
 import Main from "./components/Main/Index";
 import Navbar from "./components/Navbar/Index";
 import RegistrationForm from "./components/RegistrationForm/Index";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile/Index";
+import Config from "./components/Config/Index";
+import ProtectedRoute from "./components/ProtectedRoute/Index";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -17,17 +19,26 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/register">
+        <Route exact path="/register">
           <RegistrationForm />
         </Route>
-        <Route path="/login">
+        <Route exact path="/login">
           <Login />
         </Route>
-        <Route path="/main">
+        <Route exact path="/main">
           <Main />
         </Route>
-        <Route path="/profile">
+        <ProtectedRoute
+          exact
+          path="/profile"
+          component={Profile}
+          isAuthenticated={isLogged}
+        />
+        <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/config">
+          <Config />
         </Route>
       </Switch>
     </Router>
