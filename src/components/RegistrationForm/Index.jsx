@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { createUser, getUsers } from "../../database/lowdb";
+import { createUser } from "../../database/lowdb";
 import { Link } from "react-router-dom";
 import "./Index.css";
 import { useDispatch } from "react-redux";
-import { login } from "../../features/userSlice";
+import { login } from "../../redux/userSlice";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
