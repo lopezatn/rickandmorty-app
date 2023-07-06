@@ -14,7 +14,12 @@ const Config = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === user.password) {
-      user.password = newPassword;
+      if (password === newPassword) {
+        alert("You can not choose the same password as the previous one.");
+      } else {
+        user.password = newPassword;
+        alert("Your password has been updated successfully.")  
+      }
     } else {
       alert("Your previous password is incorrect.");
     }
