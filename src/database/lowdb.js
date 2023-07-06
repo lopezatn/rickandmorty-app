@@ -63,14 +63,18 @@ export const updateUserPassword = (username, newPassword) => {
 };
 
 export const createUser = (username, password, email) => {
+  const userId = db.data.user.length;
+
   loadDb();
   db.data.user.push({
     username,
     password,
     email,
-    id: db.data.user.length,
+    id: userId,
   });
   db.write();
+
+  return userId;
 };
 
 export const getUserByEmail = (email) => {
@@ -83,4 +87,16 @@ export const getUserByUsername = (username) => {
   const users = getUsers();
   const user = users.filter((user) => user.username === username);
   return user[0];
+};
+
+export const deleteUser = (id) => {
+  loadDb();
+  const users = getUsers();
+  const index = users.findIndex((user) => user.id === id);
+  if (index !== -1) {
+    users.splice(index, 1);
+    db.write();
+    return true;
+  }
+  return false;
 };

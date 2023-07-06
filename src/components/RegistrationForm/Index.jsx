@@ -35,14 +35,14 @@ const RegistrationForm = () => {
     }
 
     const newUser = { name, password, email };
-    createUser(newUser);
+    const createdUserId = createUser(newUser);
 
     dispatch(
       login({
+        id: createdUserId,
         name: name,
         password: password,
-        email: email,
-        loggedIn: true,
+        email: email
       })
     );
 

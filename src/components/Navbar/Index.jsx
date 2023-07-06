@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import profileIcon from "../../assets/user profile.png";
 import "./Index.css";
 import piedpiper from "../../assets/piedpiper.png";
-import { logout } from "../../features/userSlice";
+import { logout } from "../../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {

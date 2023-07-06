@@ -4,7 +4,7 @@ import { getUser } from "../../database/lowdb";
 import { useHistory } from "react-router-dom";
 import "./Index.css";
 import { useDispatch } from "react-redux";
-import { login } from "../../features/userSlice";
+import { login } from "../../redux/userSlice";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
