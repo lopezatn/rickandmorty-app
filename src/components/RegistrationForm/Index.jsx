@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createUser } from "../../database/lowdb";
+import { createUser, getUserByEmail, getUserByUsername } from "../../database/lowdb";
 import { Link } from "react-router-dom";
 import "./Index.css";
 import { useDispatch } from "react-redux";
@@ -14,6 +14,20 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const existingEmailUser = getUserByEmail(email);
+    const existingUsername = getUserByUsername(name);
+
+    if (existingEmailUser) {
+      alert("The email you're trying to register already exists");
+      return;
+    }
+
+    if (existingUsername) {
+      alert("The username you're trying to register already exists");
+      return;
+    }
+
     if (!name || !email || !password) {
       alert("please fill in all fields");
       return;

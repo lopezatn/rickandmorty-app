@@ -54,3 +54,9 @@ h2 {
 .location-item p {
   margin: 5px 0;
 }
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+}

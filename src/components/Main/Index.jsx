@@ -5,18 +5,30 @@ import "./Index.css";
 const Main = () => {
   const [characters, setCharacters] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
     fetchCharacters();
+  }, [pageNumber]);
+
+  useEffect(() => {
     fetchLocations();
   }, []);
+
+  const charAmount = 5;
+  const lastChar = charAmount * pageNumber;
 
   const fetchCharacters = async () => {
     try {
       const response = await axios.get(
-        "https://rickandmortyapi.com/api/character"
+        `https://rickandmortyapi.com/api/character/[${lastChar - 4}, ${
+          lastChar - 3
+        }, ${lastChar - 2}, ${lastChar - 1}, ${lastChar}]`
       );
-      setCharacters(await response.data.results.slice(0, 5));
+      const results = response.data; // Check if results property exists
+      if (results) {
+        setCharacters(results);
+      }
     } catch (error) {
       console.error("Error fetching characters:", error);
     }
@@ -27,22 +39,36 @@ const Main = () => {
       const response = await axios.get(
         "https://rickandmortyapi.com/api/location"
       );
-      setLocations(await response.data.results.slice(0, 5));
+      const results = response.data?.results; // Check if results property exists
+      if (results) {
+        setLocations(results.slice(0, 5));
+      }
     } catch (error) {
       console.error("Error fetching locations:", error);
     }
+  };
+
+  const handleNextPage = () => {
+    setPageNumber((prevNumber) => prevNumber + 1);
+    console.log(pageNumber);
+  };
+
+  const handlePrevPage = () => {
+    setPageNumber((prevNumber) => prevNumber - 1);
   };
 
   return (
     <div className="main-container">
       <h2>Characters</h2>
       <div className="characters-container">
+        <button disabled={pageNumber === 1} onClick={handlePrevPage}>prev</button>
         {characters.map((character) => (
           <div className="character-item" key={character.id}>
             <h3>{character.name}</h3>
             <img src={character.image} alt={character.name} />
           </div>
         ))}
+        <button onClick={handleNextPage}>next</button>
       </div>
       <h2>Locations</h2>
       <div className="locations-container">
