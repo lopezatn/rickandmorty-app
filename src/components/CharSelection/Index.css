@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+  
+.char-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f8fa;
+}
+
+.char-image {
+    width: 150px;
+}
+
+.button {
+    width: 80px;
+}

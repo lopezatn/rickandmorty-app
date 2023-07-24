@@ -9,11 +9,8 @@ const Main = () => {
 
   useEffect(() => {
     fetchCharacters();
-  }, [pageNumber]);
-
-  useEffect(() => {
     fetchLocations();
-  }, []);
+  }, [pageNumber]);
 
   const charAmount = 5;
   const lastChar = charAmount * pageNumber;
@@ -21,11 +18,9 @@ const Main = () => {
   const fetchCharacters = async () => {
     try {
       const response = await axios.get(
-        `https://rickandmortyapi.com/api/character/[${lastChar - 4}, ${
-          lastChar - 3
-        }, ${lastChar - 2}, ${lastChar - 1}, ${lastChar}]`
+        `https://rickandmortyapi.com/api/character/[${lastChar - 4}, ${lastChar - 3}, ${lastChar - 2}, ${lastChar - 1}, ${lastChar}]`
       );
-      const results = response.data; // Check if results property exists
+      const results = response.data;
       if (results) {
         setCharacters(results);
       }
@@ -34,14 +29,20 @@ const Main = () => {
     }
   };
 
+  const locationAmount = 5;
+  const lastLocation = locationAmount * pageNumber;
+  
+
   const fetchLocations = async () => {
     try {
       const response = await axios.get(
-        "https://rickandmortyapi.com/api/location"
+        `https://rickandmortyapi.com/api/location/[${lastLocation - 4}, ${lastLocation - 3}, ${lastLocation -2}, ${lastLocation - 1}, ${lastLocation}]`
       );
-      const results = response.data?.results; // Check if results property exists
+      const results = response.data;
       if (results) {
-        setLocations(results.slice(0, 5));
+        setLocations(results);
+        const locationsLength = results.length;
+        console.log(locationsLength);
       }
     } catch (error) {
       console.error("Error fetching locations:", error);
@@ -50,7 +51,6 @@ const Main = () => {
 
   const handleNextPage = () => {
     setPageNumber((prevNumber) => prevNumber + 1);
-    console.log(pageNumber);
   };
 
   const handlePrevPage = () => {
@@ -61,7 +61,9 @@ const Main = () => {
     <div className="main-container">
       <h2>Characters</h2>
       <div className="characters-container">
-        <button disabled={pageNumber === 1} onClick={handlePrevPage}>prev</button>
+        <button disabled={pageNumber === 1} onClick={handlePrevPage}>
+          prev
+        </button>
         {characters.map((character) => (
           <div className="character-item" key={character.id}>
             <h3>{character.name}</h3>

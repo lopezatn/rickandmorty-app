@@ -31,6 +31,9 @@ const Navbar = () => {
           )}
           {isAuthenticated && (
             <>
+              <Link to="/character-selection" className="navbar-link">
+                Character
+              </Link>
               <Link to="/profile" className="navbar-link">
                 Profile
               </Link>

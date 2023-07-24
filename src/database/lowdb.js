@@ -62,6 +62,19 @@ export const updateUserPassword = (username, newPassword) => {
   return false;
 };
 
+export const addUserCharacter = (username, character) => {
+  loadDb();
+  const users = getUsers();
+  const user = users.filter((user) => user.username === username);
+  if (user) {
+    user.character = character;
+    db.write();
+    return true;
+  }
+
+  return false;
+};
+
 export const createUser = (username, password, email) => {
   const userId = db.data.user.length;
 

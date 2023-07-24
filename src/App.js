@@ -8,11 +8,11 @@ import RegistrationForm from "./components/RegistrationForm/Index";
 import Profile from "./components/Profile/Index";
 import Config from "./components/Config/Index";
 import ProtectedRoute from "./components/ProtectedRoute/Index";
+import CharSelection from "./components/CharSelection/Index";
 
 function App() {
   const user = useSelector((state) => state.user);
 
-  //I'll use this later for the protected routes :)
   const isLogged = user ? true : false;
 
   return (
@@ -28,6 +28,12 @@ function App() {
         <Route exact path="/main">
           <Main />
         </Route>
+        <ProtectedRoute
+          exact
+          path="/character-selection"
+          component={CharSelection}
+          isAuthenticated={isLogged}
+        />
         <ProtectedRoute
           exact
           path="/profile"
