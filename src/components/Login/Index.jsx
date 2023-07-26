@@ -23,7 +23,7 @@ const Login = () => {
     const user = getUser(identifier, password);
     if (user) {
       dispatch(login(user));
-      history.push("/profile");
+      history.push("/main");
     } else {
       alert("Invalid name, email or password");
     }

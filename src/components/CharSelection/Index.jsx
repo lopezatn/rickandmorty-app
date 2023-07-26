@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Index.css";
-// import { fetchRandomCharacter } from "../../services/rickAndMortyAPIService";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserCharacter } from "../../database/lowdb";

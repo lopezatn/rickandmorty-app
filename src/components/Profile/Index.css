@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+  
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f8fa;
+}
+
+.char-image {
+    width: 150px;
+}
