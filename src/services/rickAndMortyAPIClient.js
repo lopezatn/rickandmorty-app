@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const fetchAllCharacters = async () => {
+export const fetchCharactersAmount = async () => {
   try {
     const response = await axios.get(
       `https://rickandmortyapi.com/api/character`
     );
     const results = response.data;
     if (results) {
-      return results;
+      return results?.info?.count ?? 0;
     }
   } catch (error) {
     console.error("Error fetching characters:", error);

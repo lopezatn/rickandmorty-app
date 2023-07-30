@@ -1,41 +1,31 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./Index.css";
-import { fetchAllCharacters, fetchLocations, fetchCharacters } from "../../services/rickAndMortyAPIClient";
+import { fetchLocations, fetchCharacters, fetchCharactersAmount } from "../../services/rickAndMortyAPIClient";
+
+
+const CHARACTERS_PER_PAGE = 5;
 
 const Main = () => {
   const [characters, setCharacters] = useState([]);
-  const [allCharacters, setAllCharacters] = useState([]);
+  const [charactersAmount, setCharactersAmount] = useState(0);
   const [locations, setLocations] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
 
-  const charAmount = 5;
-  const lastChar = charAmount * pageNumber;
-  const lastPage = Math.ceil(allCharacters?.info?.count / 5);
-  const locationAmount = 5;
+  const lastChar = CHARACTERS_PER_PAGE * pageNumber;
+  const lastPage = Math.ceil(charactersAmount / CHARACTERS_PER_PAGE);
+  const locationAmount = CHARACTERS_PER_PAGE;
   const lastLocation = locationAmount * pageNumber;
 
-  console.log(lastPage);
-
   useEffect(() => {
-    loadCharacters();
-    loadLocations();
-    loadAllCharacters();
+    loadCharactersData();
   }, [pageNumber]);
 
-
-  const loadAllCharacters = async () => {
-    const allCharactersArr = await fetchAllCharacters();
-    setAllCharacters(allCharactersArr);
-  }
-
-  const loadCharacters = async () => {
+  const loadCharactersData = async () => {
+    const amount = await fetchCharactersAmount();
     const charactersArr = await fetchCharacters(lastChar);
-    setCharacters(charactersArr);
-  }
-
-  const loadLocations = async () => {
     const locationsArr = await fetchLocations(lastLocation);
+    setCharactersAmount(amount);
+    setCharacters(charactersArr);
     setLocations(locationsArr);
   }
 
