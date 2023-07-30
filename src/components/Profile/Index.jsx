@@ -24,7 +24,6 @@ const Profile = () => {
       {character && <img className="char-image" src={character.image} alt={character.name} />}
       {character && <p>Your character is {character.name}</p>}
       {character && <p>Location is {character.location.name}</p>}
-      <br />
       <p>
         If you would like to change your current password or delete your account{" "}
         <button onClick={handleClick}>Click here</button>

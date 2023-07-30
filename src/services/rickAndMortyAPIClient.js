@@ -1,5 +1,18 @@
 import axios from "axios";
 
+export const fetchAllCharacters = async () => {
+  try {
+    const response = await axios.get(
+      `https://rickandmortyapi.com/api/character`
+    );
+    const results = response.data;
+    if (results) {
+      return results;
+    }
+  } catch (error) {
+    console.error("Error fetching characters:", error);
+  }
+};
 
 export const fetchCharacters = async (lastChar) => {
   try {
@@ -17,20 +30,6 @@ export const fetchCharacters = async (lastChar) => {
   }
 };
 
-export const fetchRandomCharacter = async () => {
-    try {
-      const response = await axios.get(
-        `https://rickandmortyapi.com/api/character/`
-      );
-      const results = response.data;
-      if (results) {
-        return results;
-      }
-    } catch (error) {
-      console.error("Error fetching characters:", error);
-    }
-  };
-
 export const fetchLocations = async (lastLocation) => {
   try {
     const response = await axios.get(
@@ -46,18 +45,3 @@ export const fetchLocations = async (lastLocation) => {
     console.error("Error fetching locations:", error);
   }
 };
-
-export const fetchRandomLocations = async () => {
-    try {
-      const response = await axios.get(
-        `https://rickandmortyapi.com/api/location/`
-      );
-      const results = response.data;
-      if (results) {
-        return results;
-      }
-    } catch (error) {
-      console.error("Error fetching locations:", error);
-    }
-  };
-  
