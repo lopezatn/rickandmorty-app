@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/lopezatn/rickandmorty-app/static/css/main.1432659e.css",
-    "main.js": "/lopezatn/rickandmorty-app/static/js/main.8bed05da.js",
-    "static/js/787.ac0ea949.chunk.js": "/lopezatn/rickandmorty-app/static/js/787.ac0ea949.chunk.js",
-    "static/media/piedpiper.png": "/lopezatn/rickandmorty-app/static/media/piedpiper.bb2f5d4c6898c7c0d01f.png",
-    "index.html": "/lopezatn/rickandmorty-app/index.html",
-    "main.1432659e.css.map": "/lopezatn/rickandmorty-app/static/css/main.1432659e.css.map",
-    "main.8bed05da.js.map": "/lopezatn/rickandmorty-app/static/js/main.8bed05da.js.map",
-    "787.ac0ea949.chunk.js.map": "/lopezatn/rickandmorty-app/static/js/787.ac0ea949.chunk.js.map"
+    "main.css": "/rickandmorty-app/static/css/main.1432659e.css",
+    "main.js": "/rickandmorty-app/static/js/main.1cb01186.js",
+    "static/js/787.ac0ea949.chunk.js": "/rickandmorty-app/static/js/787.ac0ea949.chunk.js",
+    "static/media/piedpiper.png": "/rickandmorty-app/static/media/piedpiper.bb2f5d4c6898c7c0d01f.png",
+    "index.html": "/rickandmorty-app/index.html",
+    "main.1432659e.css.map": "/rickandmorty-app/static/css/main.1432659e.css.map",
+    "main.1cb01186.js.map": "/rickandmorty-app/static/js/main.1cb01186.js.map",
+    "787.ac0ea949.chunk.js.map": "/rickandmorty-app/static/js/787.ac0ea949.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1432659e.css",
-    "static/js/main.8bed05da.js"
+    "static/js/main.1cb01186.js"
   ]
 }
