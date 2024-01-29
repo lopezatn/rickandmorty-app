@@ -28,7 +28,6 @@ const Main = () => {
     setCharacters(charactersArr);
     setLocations(locationsArr);
   }
-
   const handleNextPage = () => {
     setPageNumber((prevNumber) => prevNumber + 1);
   };
@@ -39,7 +38,7 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <h2>Characters</h2>
+      <h2>Select one of the Characters</h2>
       <div className="body-container">
         <div className="prev-button">
           <button
@@ -54,8 +53,10 @@ const Main = () => {
           <div className="characters-container">
             {characters.map((character) => (
               <div className="character-item" key={character.id}>
-                <h3 className="character-name">{character.name}</h3>
-                <img src={character.image} alt={character.name} />
+                <button>
+                  <h3 className="character-name">{character.name}</h3>
+                  <img src={character.image} alt={character.name} />
+                </button>
               </div>
             ))}
           </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../../database/lowdb";
 import { logout } from "../../redux/userSlice";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Config = () => {
   const [password, setPassword] = useState("");
@@ -9,6 +10,7 @@ const Config = () => {
 
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
 
   const handleSubmit = (e) => {
@@ -19,6 +21,7 @@ const Config = () => {
       } else {
         user.password = newPassword;
         alert("Your password has been updated successfully.")  
+        history.push("/profile");
       }
     } else {
       alert("Your previous password is incorrect.");

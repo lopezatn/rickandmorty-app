@@ -40,7 +40,7 @@ h2 {
 
 .location-item {
   width: 180px;
-  margin: 10px;
+  margin: 18px;
   padding: 10px;
   text-align: center;
   background-color: #ffffff;
@@ -72,9 +72,4 @@ h2 {
 
 .carousel-button {
   height: -webkit-fill-available;
-}
-
-.character-name {
-  padding-left: 50px;
-  width: 100px;
 }
