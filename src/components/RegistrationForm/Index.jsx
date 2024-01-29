@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import "./Index.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/userSlice";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  alert("29-01-2024 -> I am currently fixing bugs in this project... Sorry for the mess!")
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,11 +61,9 @@ const RegistrationForm = () => {
         email: email
       })
     );
-
-    console.log("Submitted successfully:", { name, email, password });
-    setName("");
-    setEmail("");
-    setPassword("");
+    
+    alert("29-01-2024: I am currently working on bug fixes, sorry for the mess.")
+    history.push("/main");
   };
 
   const isValidEmail = (value) => {
