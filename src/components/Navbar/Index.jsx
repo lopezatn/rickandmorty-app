@@ -18,7 +18,11 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <img src={piedpiper} alt="Logo" className="navbar-logo" />
-        <div className={`navbar-links-left ${isAuthenticated ? "authenticated" : ""}`}>
+        <div
+          className={`navbar-links-left ${
+            isAuthenticated ? "authenticated" : ""
+          }`}
+        >
           {!isAuthenticated && (
             <>
               <Link to="/register" className="navbar-link">
@@ -48,12 +52,16 @@ const Navbar = () => {
         </div>
         <h2 className="navbar-title">Rick & Morty App</h2>
         <div className="navbar-links-right">
-          <Link to="/profile" className="navbar-link">
-            <img src={profileIcon} alt="Profile" className="profile-icon" />
-          </Link>
-          <button className="navbar-link" onClick={handleLogout}>
-            Logout
-          </button>
+          {isAuthenticated && (
+            <Link to="/profile" className="navbar-link">
+              <img src={profileIcon} alt="Profile" className="profile-icon" />
+            </Link>
+          )}
+          {isAuthenticated && (
+            <button className="navbar-link" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </nav>

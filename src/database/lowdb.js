@@ -75,12 +75,12 @@ export const addUserCharacter = (username, character) => {
   return false;
 };
 
-export const createUser = (username, password, email) => {
+export const createUser = ({name, password, email}) => {
   const userId = db.data.user.length;
 
   loadDb();
   db.data.user.push({
-    username,
+    username: name,
     password,
     email,
     id: userId,

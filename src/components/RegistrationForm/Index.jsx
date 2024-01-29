@@ -10,6 +10,7 @@ const RegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  alert("29-01-2024 -> I am currently fixing bugs in this project... Sorry for the mess!")
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
