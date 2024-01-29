@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rickandmorty-app/static/css/main.1432659e.css",
-    "main.js": "/rickandmorty-app/static/js/main.e54b8e80.js",
+    "main.css": "/rickandmorty-app/static/css/main.c50cd9b9.css",
+    "main.js": "/rickandmorty-app/static/js/main.49a3cde5.js",
     "static/js/787.ac0ea949.chunk.js": "/rickandmorty-app/static/js/787.ac0ea949.chunk.js",
     "static/media/piedpiper.png": "/rickandmorty-app/static/media/piedpiper.bb2f5d4c6898c7c0d01f.png",
     "index.html": "/rickandmorty-app/index.html",
-    "main.1432659e.css.map": "/rickandmorty-app/static/css/main.1432659e.css.map",
-    "main.e54b8e80.js.map": "/rickandmorty-app/static/js/main.e54b8e80.js.map",
+    "main.c50cd9b9.css.map": "/rickandmorty-app/static/css/main.c50cd9b9.css.map",
+    "main.49a3cde5.js.map": "/rickandmorty-app/static/js/main.49a3cde5.js.map",
     "787.ac0ea949.chunk.js.map": "/rickandmorty-app/static/js/787.ac0ea949.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1432659e.css",
-    "static/js/main.e54b8e80.js"
+    "static/css/main.c50cd9b9.css",
+    "static/js/main.49a3cde5.js"
   ]
 }
