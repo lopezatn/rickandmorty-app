@@ -36,6 +36,11 @@ const Main = () => {
     setPageNumber((prevNumber) => prevNumber - 1);
   };
 
+  const handleCharacterClick = (event) => {
+    const selectedCharacter = event;
+    return selectedCharacter;
+  }
+
   return (
     <div className="main-container">
       <h2>Select one of the Characters</h2>
@@ -53,7 +58,7 @@ const Main = () => {
           <div className="characters-container">
             {characters.map((character) => (
               <div className="character-item" key={character.id}>
-                <button>
+                <button onClick={() => handleCharacterClick(character.id)}>
                   <h3 className="character-name">{character.name}</h3>
                   <img src={character.image} alt={character.name} />
                 </button>

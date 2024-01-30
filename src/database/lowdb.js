@@ -15,14 +15,14 @@ const loadDb = () => {
         id: 0,
       },
       {
-        username: "random2",
-        password: "random456",
+        username: "test2",
+        password: "test2",
         email: "random2@gmail.com",
         id: 1,
       },
       {
-        username: "random3",
-        password: "random789",
+        username: "test3",
+        password: "test3",
         email: "random3@gmail.com",
         id: 2,
       },
