@@ -49,28 +49,43 @@ export const getUser = (identifier, password) => {
   return null;
 };
 
-export const updateUserPassword = (username, newPassword) => {
+// export const updateUserPassword = (username, newPassword) => {
+//   loadDb();
+//   const users = getUsers();
+//   const user = users.find((user) => user.username === username);
+//   if (user) {
+//     user.password = newPassword;
+//     db.write();
+//     return true;
+//   }
+
+//   return false;
+// };
+
+export const updateUserPassword = (id, newPassword) => {
   loadDb();
   const users = getUsers();
-  const user = users.filter((user) => user.username === username);
-  if (user) {
-    user.password = newPassword;
-    db.write();
-    return true;
-  }
-
-  return false;
+  users.forEach(user => {
+    if(user.id == id) {
+      user.password = newPassword;
+      db.write();
+      return true;  
+    }
+  });
+    return false;
 };
 
-export const addUserCharacter = (username, character) => {
+export const addUserCharacter = (id, characterId) => {
   loadDb();
   const users = getUsers();
-  const user = users.filter((user) => user.username === username);
-  if (user) {
-    user.character = character;
-    db.write();
-    return true;
-  }
+
+  users.forEach(user => {
+    if(user.id == id) {
+      user.characterId = characterId;
+      db.write();
+      return true;
+    }
+  });
 
   return false;
 };
@@ -79,7 +94,7 @@ export const createUser = ({name, password, email}) => {
   const userId = db.data.user.length;
 
   loadDb();
-  db.data.user.push({
+  getUsers().push({
     username: name,
     password,
     email,

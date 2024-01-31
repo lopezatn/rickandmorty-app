@@ -8,35 +8,28 @@ import { loadCharacter } from "../../redux/characterSlice";
 const CharSelection = () => {
   const [randomCharacter, setRandomCharacter] = useState(null);
   const [randomCharacterLocation, setRandomCharacterLocation] = useState(null);
-  const [characterId, setCharacterId] = useState(0);
   const [buttonClicks, setButtonClicks] = useState(0);
 
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-
-  useEffect(() => {
-    fetchRandomCharacter();
-    fetchCharacterLocation();
-  }, [characterId])
-
   const handleClick = () => {
     const min = 1;
     const max = 826;
     const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-    setCharacterId(randomNumber);
     setButtonClicks(prevButtonClicks => prevButtonClicks + 1);
+    fetchRandomCharacter(randomNumber);
   };
 
   const handleAccept = () => {
-    addUserCharacter(user, randomCharacter);
+    addUserCharacter(user.id, randomCharacter.id);
     dispatch(loadCharacter(randomCharacter));
   };
 
-  const fetchRandomCharacter = async () => {
+  const fetchRandomCharacter = async (id) => {
     try {
       const response = await axios.get(
-        `https://rickandmortyapi.com/api/character/${characterId}`
+        `https://rickandmortyapi.com/api/character/${id}`
       );
       const result = response.data;
       if (result) {
@@ -61,16 +54,18 @@ const CharSelection = () => {
   };
 
   return (
-    <div className="char-selection-container">
-      <h2>Character Selection</h2>
-      roll the dice for a character selection.
-      <br />
-      <img className="char-image" src={randomCharacter?.image} alt={randomCharacter?.name} />
-      <p>{randomCharacter?.name}</p>
-      <p>{randomCharacterLocation?.name}</p>
-      <button disabled={buttonClicks === 3} onClick={handleClick}>Roll Dice</button>
-      <button onClick={handleAccept}>Accept character</button>
-    </div>
+    <>
+        <div className="char-selection-container">
+          <h2>Character Selection</h2>
+          <p>roll the dice for a character selection.</p>
+          <br />
+          <img className="char-image" src={randomCharacter?.image} alt={randomCharacter?.name} />
+          <p>{randomCharacter?.name}</p>
+          <p>{randomCharacterLocation?.name}</p>
+          <button disabled={buttonClicks === 3} onClick={handleClick}>Roll Dice</button>
+          <button onClick={handleAccept}>Accept character</button>
+        </div>
+    </>
   );
 };
 

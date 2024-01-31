@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../../database/lowdb";
 import { logout } from "../../redux/userSlice";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { updateUserPassword } from "../../database/lowdb";
 
 const Config = () => {
   const [password, setPassword] = useState("");
@@ -20,6 +21,7 @@ const Config = () => {
         alert("You can not choose the same password as the previous one.");
       } else {
         user.password = newPassword;
+        updateUserPassword(user.id, newPassword);
         alert("Your password has been updated successfully.")  
         history.push("/profile");
       }
