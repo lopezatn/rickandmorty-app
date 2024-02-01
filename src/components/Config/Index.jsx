@@ -20,7 +20,7 @@ const Config = () => {
       if (password === newPassword) {
         alert("You can not choose the same password as the previous one.");
       } else {
-        user.password = newPassword;
+        // user.password = newPassword;
         updateUserPassword(user.id, newPassword);
         alert("Your password has been updated successfully.")  
         history.push("/profile");

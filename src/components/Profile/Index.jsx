@@ -13,7 +13,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h1>Welcome back {user.username}!</h1>
+      <h1>Hey {user.username}!</h1>
       <p>
         Your registered email is: <b>{user.email}</b>
       </p>

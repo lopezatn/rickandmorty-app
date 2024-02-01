@@ -11,6 +11,7 @@ const CharSelection = () => {
   const [buttonClicks, setButtonClicks] = useState(0);
 
   const user = useSelector((state) => state.user);
+  const character = useSelector((state) => state.character);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -55,6 +56,7 @@ const CharSelection = () => {
 
   return (
     <>
+      {!character ? 
         <div className="char-selection-container">
           <h2>Character Selection</h2>
           <p>roll the dice for a character selection.</p>
@@ -65,6 +67,13 @@ const CharSelection = () => {
           <button disabled={buttonClicks === 3} onClick={handleClick}>Roll Dice</button>
           <button onClick={handleAccept}>Accept character</button>
         </div>
+        :
+        <div className="char-selection-container">
+          <img className="char-image" src={character.image} alt={character.name} />
+          <p>Your character is {character.name}</p>
+          <p>Location is {character.location.name}</p>
+        </div>
+      }   
     </>
   );
 };
