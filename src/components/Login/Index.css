@@ -1,12 +1,18 @@
+.login-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f8fa;
+}
+
 .login-form {
-    display: flex;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #f5f8fa; /* Use your desired background color */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f5f8fa; 
   }
   
   .login-form h2 {

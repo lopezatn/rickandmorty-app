@@ -31,29 +31,30 @@ const Login = () => {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Login to Rick & Morty App</h2>
-      <label>
-        Email or Username:
-        <input
-          type="text"
-          value={identifier}
-          onChange={(e) => setIdentifier(e.target.value)}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button type="submit">Login</button>
-      <p>
-        Don't have an account? <Link to="/register">Register here</Link>
-      </p>
-    </form>
+    <div className="login-wrapper">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label>
+          <center>Username</center>
+          <input
+            type="text"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
+          />
+        </label>
+        <label>
+          <center>Password</center>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <button type="submit">Login</button>
+        <p>
+        <Link to="/register">Create an account</Link>
+        </p>
+      </form>
+    </div>
   );
 };
 
